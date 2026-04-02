@@ -10,4 +10,6 @@ const bootstrap = () => {
   }
 };
 
+console.log(bootstrap);
+
 bootstrap();
