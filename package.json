@@ -8,6 +8,10 @@
     "build": "tsc",
     "dev": "tsx watch src/server.ts",
     "lint": "eslint ./src/**/*",
+    "migrate": "prisma migrate dev",
+    "generate": "prisma generate",
+    "push": "prisma db push",
+    "pull": "prisma db pull",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
