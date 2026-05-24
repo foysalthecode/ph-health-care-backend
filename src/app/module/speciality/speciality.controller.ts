@@ -1,11 +1,13 @@
 import { Request, Response } from "express";
 import { specialityService } from "./speciality.service";
 import { catchAsync } from "../../shared/catchAsync";
+import { sendResponse } from "../../shared/sendResponse";
 
 const createSpeciality = catchAsync(async (req: Request, res: Response) => {
   const payload = req.body;
   const result = await specialityService.CreateSpeciality(payload);
-  res.status(201).json({
+  sendResponse(res, {
+    httpStatusCode: 201,
     success: true,
     message: "Speciality Created Successfully",
     data: result,
@@ -15,9 +17,10 @@ const createSpeciality = catchAsync(async (req: Request, res: Response) => {
 const GetAllSpeciality = catchAsync(async (req: Request, res: Response) => {
   const speciality = await specialityService.GetAllSpeciality();
 
-  res.status(200).json({
+  sendResponse(res, {
+    httpStatusCode: 200,
     success: true,
-    message: "Data Retirive successfully",
+    message: "Speciality Retrieved Successfully",
     data: speciality,
   });
 });
@@ -26,7 +29,8 @@ const DeleteSpeciality = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
   const result = await specialityService.DeleteSpecialtiy(id as string);
 
-  res.status(200).json({
+  sendResponse(res, {
+    httpStatusCode: 200,
     success: true,
     message: "Speciality Deleted Successfully",
     data: result,
@@ -41,7 +45,8 @@ const UpdateSpeciality = catchAsync(async (req: Request, res: Response) => {
     payload,
   );
 
-  res.status(200).json({
+  sendResponse(res, {
+    httpStatusCode: 200,
     success: true,
     message: "Speciality Updated Successfully",
     data: result,
