@@ -14,4 +14,21 @@ const getAllDoctors = async () => {
   return doctors;
 };
 
-export const DoctorService = { getAllDoctors };
+const deleteDoctor = async (id: string) => {
+  const result = await prisma.doctor.delete({
+    where: {
+      id,
+    },
+  });
+  const deleteUser = await prisma.$transaction(async (tx) => {
+    const user = await tx.user.delete({
+      where: {
+        id: result.userId,
+      },
+    });
+    return user;
+  });
+  return { result, deleteUser };
+};
+
+export const DoctorService = { getAllDoctors, deleteDoctor };
