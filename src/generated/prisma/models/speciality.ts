@@ -206,6 +206,7 @@ export type specialityWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"speciality"> | Date | string
   isDeleted?: Prisma.BoolFilter<"speciality"> | boolean
   deletedAt?: Prisma.DateTimeNullableFilter<"speciality"> | Date | string | null
+  doctorSpecialities?: Prisma.DoctorSpecialityListRelationFilter
 }
 
 export type specialityOrderByWithRelationInput = {
@@ -217,6 +218,7 @@ export type specialityOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  doctorSpecialities?: Prisma.DoctorSpecialityOrderByRelationAggregateInput
 }
 
 export type specialityWhereUniqueInput = Prisma.AtLeast<{
@@ -231,6 +233,7 @@ export type specialityWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"speciality"> | Date | string
   isDeleted?: Prisma.BoolFilter<"speciality"> | boolean
   deletedAt?: Prisma.DateTimeNullableFilter<"speciality"> | Date | string | null
+  doctorSpecialities?: Prisma.DoctorSpecialityListRelationFilter
 }, "id" | "title">
 
 export type specialityOrderByWithAggregationInput = {
@@ -270,6 +273,7 @@ export type specialityCreateInput = {
   updatedAt?: Date | string
   isDeleted?: boolean
   deletedAt?: Date | string | null
+  doctorSpecialities?: Prisma.DoctorSpecialityCreateNestedManyWithoutSpecialityInput
 }
 
 export type specialityUncheckedCreateInput = {
@@ -281,6 +285,7 @@ export type specialityUncheckedCreateInput = {
   updatedAt?: Date | string
   isDeleted?: boolean
   deletedAt?: Date | string | null
+  doctorSpecialities?: Prisma.DoctorSpecialityUncheckedCreateNestedManyWithoutSpecialityInput
 }
 
 export type specialityUpdateInput = {
@@ -292,6 +297,7 @@ export type specialityUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  doctorSpecialities?: Prisma.DoctorSpecialityUpdateManyWithoutSpecialityNestedInput
 }
 
 export type specialityUncheckedUpdateInput = {
@@ -303,6 +309,7 @@ export type specialityUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  doctorSpecialities?: Prisma.DoctorSpecialityUncheckedUpdateManyWithoutSpecialityNestedInput
 }
 
 export type specialityCreateManyInput = {
@@ -371,6 +378,114 @@ export type specialityMinOrderByAggregateInput = {
   deletedAt?: Prisma.SortOrder
 }
 
+export type SpecialityScalarRelationFilter = {
+  is?: Prisma.specialityWhereInput
+  isNot?: Prisma.specialityWhereInput
+}
+
+export type specialityCreateNestedOneWithoutDoctorSpecialitiesInput = {
+  create?: Prisma.XOR<Prisma.specialityCreateWithoutDoctorSpecialitiesInput, Prisma.specialityUncheckedCreateWithoutDoctorSpecialitiesInput>
+  connectOrCreate?: Prisma.specialityCreateOrConnectWithoutDoctorSpecialitiesInput
+  connect?: Prisma.specialityWhereUniqueInput
+}
+
+export type specialityUpdateOneRequiredWithoutDoctorSpecialitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.specialityCreateWithoutDoctorSpecialitiesInput, Prisma.specialityUncheckedCreateWithoutDoctorSpecialitiesInput>
+  connectOrCreate?: Prisma.specialityCreateOrConnectWithoutDoctorSpecialitiesInput
+  upsert?: Prisma.specialityUpsertWithoutDoctorSpecialitiesInput
+  connect?: Prisma.specialityWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.specialityUpdateToOneWithWhereWithoutDoctorSpecialitiesInput, Prisma.specialityUpdateWithoutDoctorSpecialitiesInput>, Prisma.specialityUncheckedUpdateWithoutDoctorSpecialitiesInput>
+}
+
+export type specialityCreateWithoutDoctorSpecialitiesInput = {
+  id?: string
+  title: string
+  description?: string | null
+  icon?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+}
+
+export type specialityUncheckedCreateWithoutDoctorSpecialitiesInput = {
+  id?: string
+  title: string
+  description?: string | null
+  icon?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+}
+
+export type specialityCreateOrConnectWithoutDoctorSpecialitiesInput = {
+  where: Prisma.specialityWhereUniqueInput
+  create: Prisma.XOR<Prisma.specialityCreateWithoutDoctorSpecialitiesInput, Prisma.specialityUncheckedCreateWithoutDoctorSpecialitiesInput>
+}
+
+export type specialityUpsertWithoutDoctorSpecialitiesInput = {
+  update: Prisma.XOR<Prisma.specialityUpdateWithoutDoctorSpecialitiesInput, Prisma.specialityUncheckedUpdateWithoutDoctorSpecialitiesInput>
+  create: Prisma.XOR<Prisma.specialityCreateWithoutDoctorSpecialitiesInput, Prisma.specialityUncheckedCreateWithoutDoctorSpecialitiesInput>
+  where?: Prisma.specialityWhereInput
+}
+
+export type specialityUpdateToOneWithWhereWithoutDoctorSpecialitiesInput = {
+  where?: Prisma.specialityWhereInput
+  data: Prisma.XOR<Prisma.specialityUpdateWithoutDoctorSpecialitiesInput, Prisma.specialityUncheckedUpdateWithoutDoctorSpecialitiesInput>
+}
+
+export type specialityUpdateWithoutDoctorSpecialitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type specialityUncheckedUpdateWithoutDoctorSpecialitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+
+/**
+ * Count Type SpecialityCountOutputType
+ */
+
+export type SpecialityCountOutputType = {
+  doctorSpecialities: number
+}
+
+export type SpecialityCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  doctorSpecialities?: boolean | SpecialityCountOutputTypeCountDoctorSpecialitiesArgs
+}
+
+/**
+ * SpecialityCountOutputType without action
+ */
+export type SpecialityCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SpecialityCountOutputType
+   */
+  select?: Prisma.SpecialityCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * SpecialityCountOutputType without action
+ */
+export type SpecialityCountOutputTypeCountDoctorSpecialitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DoctorSpecialityWhereInput
+}
 
 
 export type specialitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -382,6 +497,8 @@ export type specialitySelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   updatedAt?: boolean
   isDeleted?: boolean
   deletedAt?: boolean
+  doctorSpecialities?: boolean | Prisma.speciality$doctorSpecialitiesArgs<ExtArgs>
+  _count?: boolean | Prisma.SpecialityCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["speciality"]>
 
 export type specialitySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -418,10 +535,18 @@ export type specialitySelectScalar = {
 }
 
 export type specialityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "icon" | "createdAt" | "updatedAt" | "isDeleted" | "deletedAt", ExtArgs["result"]["speciality"]>
+export type specialityInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  doctorSpecialities?: boolean | Prisma.speciality$doctorSpecialitiesArgs<ExtArgs>
+  _count?: boolean | Prisma.SpecialityCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type specialityIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type specialityIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $specialityPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "speciality"
-  objects: {}
+  objects: {
+    doctorSpecialities: Prisma.$DoctorSpecialityPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
@@ -825,6 +950,7 @@ readonly fields: specialityFieldRefs;
  */
 export interface Prisma__specialityClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  doctorSpecialities<T extends Prisma.speciality$doctorSpecialitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.speciality$doctorSpecialitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorSpecialityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -879,6 +1005,10 @@ export type specialityFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
+  /**
    * Filter, which speciality to fetch.
    */
   where: Prisma.specialityWhereUniqueInput
@@ -897,6 +1027,10 @@ export type specialityFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extens
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
+  /**
    * Filter, which speciality to fetch.
    */
   where: Prisma.specialityWhereUniqueInput
@@ -914,6 +1048,10 @@ export type specialityFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Omit specific fields from the speciality
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
   /**
    * Filter, which speciality to fetch.
    */
@@ -963,6 +1101,10 @@ export type specialityFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensi
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
+  /**
    * Filter, which speciality to fetch.
    */
   where?: Prisma.specialityWhereInput
@@ -1010,6 +1152,10 @@ export type specialityFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the speciality
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
   /**
    * Filter, which specialities to fetch.
    */
@@ -1059,6 +1205,10 @@ export type specialityCreateArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
+  /**
    * The data needed to create a speciality.
    */
   data: Prisma.XOR<Prisma.specialityCreateInput, Prisma.specialityUncheckedCreateInput>
@@ -1106,6 +1256,10 @@ export type specialityUpdateArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the speciality
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
   /**
    * The data needed to update a speciality.
    */
@@ -1173,6 +1327,10 @@ export type specialityUpsertArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
+  /**
    * The filter to search for the speciality to update in case it exists.
    */
   where: Prisma.specialityWhereUniqueInput
@@ -1199,6 +1357,10 @@ export type specialityDeleteArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
+  /**
    * Filter which speciality to delete.
    */
   where: Prisma.specialityWhereUniqueInput
@@ -1219,6 +1381,30 @@ export type specialityDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
+ * speciality.doctorSpecialities
+ */
+export type speciality$doctorSpecialitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DoctorSpeciality
+   */
+  select?: Prisma.DoctorSpecialitySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DoctorSpeciality
+   */
+  omit?: Prisma.DoctorSpecialityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DoctorSpecialityInclude<ExtArgs> | null
+  where?: Prisma.DoctorSpecialityWhereInput
+  orderBy?: Prisma.DoctorSpecialityOrderByWithRelationInput | Prisma.DoctorSpecialityOrderByWithRelationInput[]
+  cursor?: Prisma.DoctorSpecialityWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DoctorSpecialityScalarFieldEnum | Prisma.DoctorSpecialityScalarFieldEnum[]
+}
+
+/**
  * speciality without action
  */
 export type specialityDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1230,4 +1416,8 @@ export type specialityDefaultArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the speciality
    */
   omit?: Prisma.specialityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.specialityInclude<ExtArgs> | null
 }
