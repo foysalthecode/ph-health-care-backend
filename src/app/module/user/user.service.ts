@@ -6,17 +6,15 @@ import { IcreateDoctorePayload } from "./user.interface";
 const createDoctor = async (payload: IcreateDoctorePayload) => {
   const specialities: speciality[] = [];
 
-  for (const specialityId of payload.spcialities) {
+  for (const specialityId of payload.specialities) {
     const specialty = await prisma.speciality.findUnique({
       where: {
         id: specialityId,
       },
     });
-
     if (!specialty) {
       throw new Error(`Speciality with id ${specialityId} not found`);
     }
-
     specialities.push(specialty);
   }
 

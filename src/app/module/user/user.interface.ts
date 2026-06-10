@@ -15,7 +15,6 @@ export interface IcreateDoctorePayload {
     qualification: string;
     currentWorkingPlace: string;
     designation: string;
-    deletedAt: string
   };
-  spcialities: string[];
+  specialities: string[];
 }
