@@ -61,20 +61,38 @@ const createDoctorZodSchema = z.object({
 
 const router = Router();
 
-router.post(
-  "/create-doctor",
-  (req: Request, res: Response, next: NextFunction) => {
-    const parseResult = createDoctorZodSchema.safeParse(req.body);
+const validateRequest = (zodSchema: z.ZodObject) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const parseResult = zodSchema.safeParse(req.body);
 
     if (!parseResult.success) {
       next(parseResult.error);
     }
-
+    //sanitize data
     req.body = parseResult.data;
 
     console.log(req.body, "After zod validation -- user routes ts");
     next();
-  },
+  };
+};
+
+router.post(
+  "/create-doctor",
+  // (req: Request, res: Response, next: NextFunction) => {
+  //   const parseResult = createDoctorZodSchema.safeParse(req.body);
+
+  //   if (!parseResult.success) {
+  //     next(parseResult.error);
+  //   }
+
+  //   req.body = parseResult.data;
+
+  //   console.log(req.body, "After zod validation -- user routes ts");
+  //   next();
+  // },
+
+  validateRequest(createDoctorZodSchema),
+
   UserController.createDoctor,
 );
 
