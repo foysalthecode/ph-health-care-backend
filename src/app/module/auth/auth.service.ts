@@ -48,7 +48,27 @@ const registerPatient = async (payload: IRegisterPatientPayload) => {
       return patientTx;
     });
 
-    return { ...data, patient };
+    const accessToken = tokenUtils.getAccessToken({
+      userID: data.user.id,
+      role: data.user.role,
+      name: data.user.name,
+      email: data.user.email,
+      status: data.user.status,
+      isDeleted: data.user.isDeleted,
+      emailVarified: data.user.emailVerified,
+    });
+
+    const refreshToken = tokenUtils.getRefreshToken({
+      userID: data.user.id,
+      role: data.user.role,
+      name: data.user.name,
+      email: data.user.email,
+      status: data.user.status,
+      isDeleted: data.user.isDeleted,
+      emailVarified: data.user.emailVerified,
+    });
+
+    return { ...data, accessToken, refreshToken, patient };
   } catch (error) {
     console.log("transaction error in auth service register user", error);
     await prisma.user.delete({
