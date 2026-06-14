@@ -3,6 +3,7 @@ import { prisma } from "./app/lib/prisma";
 import { IndexRotues } from "./app/routes";
 import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
 import { notFound } from "./app/middleware/notFound";
+import cookieParser from "cookie-parser";
 
 const app: Application = express();
 
@@ -10,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+app.use(cookieParser());
 
 // specialities routes
 
@@ -31,6 +33,6 @@ app.get("/", async (req: Request, res: Response) => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 app.use(globalErrorHandler);
-app.use(notFound)
+app.use(notFound);
 
 export default app;
