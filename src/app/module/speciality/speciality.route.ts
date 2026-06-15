@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextFunction, Request, Response, Router } from "express";
+import { Router } from "express";
 import { specialityController } from "./speciality.controller";
-import { cookieUtils } from "../../utils/cookie";
-import AppError from "../../errorHelpers/AppError";
-import status from "http-status";
-import { jwtUtils } from "../../utils/jwt";
-import { envVars } from "../../../config/env";
 import { checkAuth } from "../../middleware/checkAuth";
 import { Role } from "../../../generated/prisma/enums";
 
