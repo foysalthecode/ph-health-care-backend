@@ -80,6 +80,12 @@ export const checkAuth =
               "Forbidden Access! You Do not have permission to access this resource - session token",
             );
           }
+
+          req.user = {
+            userId: user.id,
+            role: user.role,
+            email: user.email,
+          };
         }
 
         const accessToken = cookieUtils.getCookie(req, "accessToken");
