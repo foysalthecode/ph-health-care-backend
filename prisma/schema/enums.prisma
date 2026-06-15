@@ -35,7 +35,7 @@ enum AppointmentStatus {
     CANCELED
 }
 
-enum paymentStatus {
+enum PaymentStatus {
     PAID
     UNPAID
 }
