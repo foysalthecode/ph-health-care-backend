@@ -61,9 +61,9 @@ export const AppointmentStatus = {
 export type AppointmentStatus = (typeof AppointmentStatus)[keyof typeof AppointmentStatus]
 
 
-export const paymentStatus = {
+export const PaymentStatus = {
   PAID: 'PAID',
   UNPAID: 'UNPAID'
 } as const
 
-export type paymentStatus = (typeof paymentStatus)[keyof typeof paymentStatus]
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]

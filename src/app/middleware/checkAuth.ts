@@ -21,7 +21,7 @@ export const checkAuth =
       if (!sessionToken) {
         throw new AppError(
           status.UNAUTHORIZED,
-          "Unauthorized Access! No session Token Provided",
+          "Unauthorized Access!! No session Token Provided",
         );
       }
 
