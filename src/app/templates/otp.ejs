@@ -1,0 +1,181 @@
+<!-- <h2>Hello<%= name %></h2>
+<P>Your OTP Is <b><%=otp%></b>. It will expire In 2 minutes</P> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Your Email</title>
+    <style>
+      /* Reset styles for email clients */
+      body,
+      table,
+      td,
+      a {
+        text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+      img {
+        -ms-interpolation-mode: bicubic;
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+      table {
+        border-collapse: collapse !important;
+      }
+      body {
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        background-color: #f4f6f8;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Custom styles */
+      .wrapper {
+        width: 100%;
+        table-layout: fixed;
+        background-color: #f4f6f8;
+        padding-bottom: 40px;
+        padding-top: 40px;
+      }
+      .main-table {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #e1e4e8;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+      .header {
+        padding: 30px 40px;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .content {
+        padding: 40px;
+      }
+      .footer {
+        padding: 20px 40px;
+        text-align: center;
+        font-size: 12px;
+        color: #718096;
+        background-color: #f8fafc;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      h1 {
+        color: #1a202c;
+        font-size: 24px;
+        margin-top: 0;
+        font-weight: 600;
+      }
+      p {
+        color: #4a5568;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      .otp-container {
+        background-color: #f7fafc;
+        border: 2px dashed #e2e8f0;
+        border-radius: 6px;
+        padding: 20px;
+        text-align: center;
+        margin: 30px 0;
+      }
+      .otp-code {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 6px;
+        color: #3182ce;
+        margin: 0;
+        padding-left: 6px;
+      } /* padding-left offsets letter-spacing centering issue */
+
+      .expiry-text {
+        font-size: 14px;
+        color: #a0aec0;
+        text-align: center;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <table
+      role="presentation"
+      class="wrapper"
+      width="100%"
+      cellspacing="0"
+      cellpadding="0"
+    >
+      <tr>
+        <td>
+          <table
+            role="presentation"
+            class="main-table"
+            width="100%"
+            cellspacing="0"
+            cellpadding="0"
+          >
+            <tr>
+              <td class="header">
+                <span style="font-size: 28px; font-weight: bold; color: #3182ce"
+                  >Ph Health Care</span
+                >
+              </td>
+            </tr>
+
+            <tr>
+              <td class="content">
+                <h1>Verify your email address</h1>
+                <p>Hi <%= name %>,</p>
+                <p>
+                  Thank you for signing up! To complete your registration and
+                  secure your account, please use the verification code below.
+                  This code is valid for the next 2 minutes.
+                </p>
+
+                <div class="otp-container">
+                  <h2 class="otp-code"><%= otp %></h2>
+                </div>
+
+                <p>
+                  If you didn't request this email, you can safely ignore it.
+                  Someone might have typed your email address by mistake.
+                </p>
+                <p>Best regards,<br />The Ph Health CareTeam</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="footer">
+                <p class="expiry-text">
+                  This is an automated security email. Please do not reply
+                  directly to this message.
+                </p>
+                <p style="margin-top: 10px; margin-bottom: 0">
+                  © 2026 Ph Health Care. All rights reserved.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
