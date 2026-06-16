@@ -253,6 +253,36 @@ const changePassword = async (
     }),
   });
 
+  const accessToken = tokenUtils.getAccessToken({
+    userID: session.user.id,
+    role: session.user.role,
+    name: session.user.name,
+    email: session.user.email,
+    status: session.user.status,
+    isDeleted: session.user.isDeleted,
+    emailVarified: session.user.emailVerified,
+  });
+
+  const refreshToken = tokenUtils.getRefreshToken({
+    userID: session.user.id,
+    role: session.user.role,
+    name: session.user.name,
+    email: session.user.email,
+    status: session.user.status,
+    isDeleted: session.user.isDeleted,
+    emailVarified: session.user.emailVerified,
+  });
+
+  return { ...result, accessToken, refreshToken };
+};
+
+const logOutUser = async (sessionToken: string) => {
+  const result = await auth.api.signOut({
+    headers: new Headers({
+      Authorization: `Bearer ${sessionToken}`,
+    }),
+  });
+
   return result;
 };
 
@@ -261,5 +291,6 @@ export const AuthService = {
   loginUser,
   getMe,
   getNewToken,
-  changePassword
+  changePassword,
+  logOutUser,
 };
