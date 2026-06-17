@@ -253,6 +253,17 @@ const changePassword = async (
     }),
   });
 
+  if (session.user.needsPasswordChnage) {
+    await prisma.user.update({
+      where: {
+        id: session.user.id,
+      },
+      data: {
+        needsPasswordChnage: false,
+      },
+    });
+  }
+
   const accessToken = tokenUtils.getAccessToken({
     userID: session.user.id,
     role: session.user.role,
