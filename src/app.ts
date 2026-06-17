@@ -11,7 +11,7 @@ import path from "path";
 const app: Application = express();
 
 app.set("view engine", "ejs");
-app.set("view", path.resolve(process.cwd(), `src/app/templates`));
+app.set("views", path.resolve(process.cwd(), `src/app/templates`));
 
 app.use("/api/auth", toNodeHandler(auth));
 
