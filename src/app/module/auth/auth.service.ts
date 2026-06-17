@@ -253,7 +253,7 @@ const changePassword = async (
     }),
   });
 
-  if (session.user.needsPasswordChnage) {
+  if (session.user.needsPasswordChange) {
     await prisma.user.update({
       where: {
         id: session.user.id,
@@ -373,6 +373,17 @@ const resetPassword = async (
       password: newPassword,
     },
   });
+
+  if (isUserExist.needsPasswordChange) {
+    await prisma.user.update({
+      where: {
+        id: isUserExist.id,
+      },
+      data: {
+        needsPasswordChnage: false,
+      },
+    });
+  }
 
   await prisma.session.deleteMany({
     where: {

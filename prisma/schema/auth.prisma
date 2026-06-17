@@ -5,7 +5,7 @@ model User {
     emailVerified       Boolean    @default(false)
     role                Role       @default(PATIENT)
     status              UserStatus @default(ACTIVE)
-    needsPasswordChnage Boolean    @default(false)
+    needsPasswordChange Boolean    @default(false)
     isDeleted           Boolean    @default(false)
     deletedAt           DateTime?
     image               String?
