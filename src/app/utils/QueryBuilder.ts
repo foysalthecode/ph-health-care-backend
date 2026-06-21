@@ -325,6 +325,11 @@ export class QueryBuilder<
     return this;
   }
 
+  include (relation: TInclude) : this {
+
+    return this;
+  }
+
   private parseFilterValue(value: unknown): unknown {
     if (value === "true") {
       return true;
