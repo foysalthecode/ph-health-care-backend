@@ -325,7 +325,17 @@ export class QueryBuilder<
     return this;
   }
 
-  include (relation: TInclude) : this {
+  include(relation: TInclude): this {
+    if (this.selectFields) {
+      return this;
+    }
+
+    //if feild methos is used,then include method will be ingnored to prevent conflict between select and include
+
+    this.query.include = {
+      ...(this.query.include as Record<string, unknown>),
+      ...(relation as Record<string, unknown>),
+    };
 
     return this;
   }
