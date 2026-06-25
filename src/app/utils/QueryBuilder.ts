@@ -25,12 +25,12 @@ export class QueryBuilder<
   private skip: number = 0;
   private sortBy: string = "createdAt";
   private sortOrder: "asc" | "desc" = "desc";
-  private selectFields: Record<string, boolean | undefined> = {};
+  private selectFields: Record<string, boolean> | undefined;
 
   constructor(
     private model: prismaModelDelegate,
     private queryParams: IQueryParams,
-    private config: IQueryConfig,
+    private config: IQueryConfig = {},
   ) {
     this.query = {
       where: {},
@@ -76,8 +76,10 @@ export class QueryBuilder<
 
               return {
                 [relation]: {
-                  [nestedRelation]: {
-                    [nestedField]: stringFilter,
+                  some: {
+                    [nestedRelation]: {
+                      [nestedField]: stringFilter,
+                    },
                   },
                 },
               };
@@ -296,6 +298,10 @@ export class QueryBuilder<
           [sortBy]: sortOrder,
         };
       }
+    } else {
+      this.query.orderBy = {
+        [sortBy]: sortOrder,
+      };
     }
 
     return this;
@@ -357,7 +363,7 @@ export class QueryBuilder<
       }
     });
 
-    const includeParam = this.queryParams.includes as string | undefined;
+    const includeParam = this.queryParams.include as string | undefined;
 
     if (includeParam && typeof includeParam === "string") {
       const requstedRelations = includeParam
@@ -443,6 +449,8 @@ export class QueryBuilder<
         } else {
           result[key] = source[key];
         }
+      } else {
+        result[key] = source[key];
       }
     }
     return result;
@@ -490,7 +498,7 @@ export class QueryBuilder<
         case "contains":
         case "startsWith":
         case "endsWith":
-          rangeQuery.lt = parsedValue;
+          rangeQuery[operator] = parsedValue;
           break;
 
         case "in":
