@@ -3,6 +3,7 @@ import { SpecialityRoutes } from "../module/speciality/speciality.route";
 import { AuthRoutes } from "../module/auth/auth.routes";
 import { UserRoutes } from "../module/user/user.route";
 import { DoctorRoutes } from "../module/doctor/doctor.route";
+import { doctorScheduleRoutes } from "../module/doctorSchedule/doctorSchedule.route";
 
 const router = Router();
 
@@ -13,5 +14,7 @@ router.use("/specialities", SpecialityRoutes);
 router.use("/users", UserRoutes);
 
 router.use("/doctors", DoctorRoutes);
+
+router.use("/schedules", doctorScheduleRoutes);
 
 export const IndexRotues = router;
