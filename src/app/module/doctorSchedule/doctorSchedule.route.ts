@@ -30,7 +30,7 @@ router.get(
 );
 
 router.patch(
-  "/update-my-doctor-schedule/:id",
+  "/update-my-doctor-schedule",
   checkAuth(Role.DOCTOR),
   doctorScheduleController.updateMyDoctorSchedule,
 );

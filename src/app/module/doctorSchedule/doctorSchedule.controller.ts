@@ -5,7 +5,9 @@ import { sendResponse } from "../../shared/sendResponse";
 import status from "http-status";
 
 const createSchedule = catchAsync(async (req: Request, res: Response) => {
-  const result = await doctorScheduleService.createSchedule();
+  const payload = req.body;
+  const user = req.user;
+  const result = await doctorScheduleService.createSchedule(user, payload);
   sendResponse(res, {
     httpStatusCode: status.CREATED,
     success: true,
@@ -50,7 +52,12 @@ const getDoctorScheduleById = catchAsync(
 
 const updateMyDoctorSchedule = catchAsync(
   async (req: Request, res: Response) => {
-    const result = await doctorScheduleService.updateMyDoctorSchedule();
+    const payload = req.body;
+    const user = req.user;
+    const result = await doctorScheduleService.updateMyDoctorSchedule(
+      user,
+      payload,
+    );
     sendResponse(res, {
       httpStatusCode: status.OK,
       success: true,
