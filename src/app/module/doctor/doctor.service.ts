@@ -49,7 +49,7 @@ const getAllDoctors = async (query: IQueryParams) => {
         },
       },
     })
-    .dynamicInclue(doctorIncludeConfig)
+    .dynamicInclude(doctorIncludeConfig)
     .paginate()
     .sort()
     .fields()

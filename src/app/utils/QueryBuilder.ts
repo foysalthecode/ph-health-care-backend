@@ -298,7 +298,7 @@ export class QueryBuilder<
     return this;
   }
 
-  dynamicInclue(
+  dynamicInclude(
     includeConfig: Record<string, unknown>,
     defaultInclude?: string[],
   ): this {

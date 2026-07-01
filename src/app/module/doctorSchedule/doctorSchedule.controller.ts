@@ -35,7 +35,10 @@ const getMyDoctorSchedule = catchAsync(async (req: Request, res: Response) => {
 
 const getAllDoctorSchedules = catchAsync(
   async (req: Request, res: Response) => {
-    const result = await doctorScheduleService.getAllDoctorSchedules();
+    const query = req.query;
+    const result = await doctorScheduleService.getAllDoctorSchedules(
+      query as IQueryParams,
+    );
     sendResponse(res, {
       httpStatusCode: status.OK,
       success: true,

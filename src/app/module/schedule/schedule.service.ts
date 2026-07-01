@@ -90,7 +90,7 @@ const getAllSchedule = async (query: IQueryParams) => {
     .search()
     .filter()
     .paginate()
-    .dynamicInclue(scheduleInclueConfig)
+    .dynamicInclude(scheduleInclueConfig)
     .sort()
     .fields()
     .execute();
