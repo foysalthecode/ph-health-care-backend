@@ -5,12 +5,14 @@ import { sendResponse } from "../../shared/sendResponse";
 import status from "http-status";
 
 const bookAppointment = catchAsync(async (req: Request, res: Response) => {
-  const result = await AppoinmentService.bookAppointment();
+  const payload = req.body;
+  const user = req.user;
+  const appoinment = await AppoinmentService.bookAppointment(payload, user);
   sendResponse(res, {
     httpStatusCode: status.CREATED,
     success: true,
-    message: "",
-    data: result,
+    message: "Appoinment Booked Successfully",
+    data: appoinment,
   });
 });
 const getMyAppoinments = catchAsync(async (req: Request, res: Response) => {
