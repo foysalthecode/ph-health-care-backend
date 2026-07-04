@@ -2,6 +2,9 @@ import { uuidv7 } from "zod";
 import { IRequestUser } from "../../interfaces/requestUser.interface";
 import { prisma } from "../../lib/prisma";
 import { IBookAppoinmentPayload } from "./appoinment.interface";
+import { AppointmentStatus, Role } from "../../../generated/prisma/enums";
+import AppError from "../../errorHelpers/AppError";
+import status from "http-status";
 
 const bookAppointment = async (
   payload: IBookAppoinmentPayload,
@@ -79,6 +82,7 @@ const getMyAppoinments = async (user: IRequestUser) => {
     },
   });
 
+  // eslint-disable-next-line no-useless-assignment
   let appointments = [];
 
   if (patientData) {
@@ -108,7 +112,43 @@ const getMyAppoinments = async (user: IRequestUser) => {
   return appointments;
 };
 
-const changeAppointmentStatus = async () => {};
+const changeAppointmentStatus = async (
+  appoinmentId: string,
+  appoinmentStatus: AppointmentStatus,
+  user: IRequestUser,
+) => {
+  const appoinmentData = await prisma.appointment.findUniqueOrThrow({
+    where: {
+      id: appoinmentId,
+      // status: AppointmentStatus.SCHEDULED,
+    },
+    include: {
+      doctor: true,
+    },
+  });
+
+  // if (!appoinmentData) {
+  //   throw new AppError(
+  //     status.NOT_FOUND,
+  //     "Appoinment not Found or Already completed or cancelled",
+  //   );
+  // }
+
+  if (user?.role === Role.DOCTOR) {
+    if (!(user?.email === appoinmentData.doctor.email)) {
+      throw new AppError(status.BAD_REQUEST, "This is not Your Appoinment");
+    }
+  }
+
+  return await prisma.appointment.update({
+    where: {
+      id: appoinmentId,
+    },
+    data: {
+      status: appoinmentStatus,
+    },
+  });
+};
 
 const getMySingleAppointment = async () => {};
 const getAllAppointments = async () => {};
