@@ -28,7 +28,14 @@ const getMyAppoinments = catchAsync(async (req: Request, res: Response) => {
 
 const changeAppointmentStatus = catchAsync(
   async (req: Request, res: Response) => {
-    const result = await AppoinmentService.changeAppointmentStatus();
+    const appinmentId = req.params.id;
+    const payload = req.body;
+    const user = req.user;
+    const result = await AppoinmentService.changeAppointmentStatus(
+      appinmentId as string,
+      payload,
+      user,
+    );
     sendResponse(res, {
       httpStatusCode: status.OK,
       success: true,
