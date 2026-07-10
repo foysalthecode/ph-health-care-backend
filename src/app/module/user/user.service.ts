@@ -45,7 +45,7 @@ const createDoctor = async (payload: IcreateDoctorePayload) => {
       password: payload.password,
       role: Role.DOCTOR,
       name: payload.doctor.name,
-      needsPasswordChnage: true,
+      needsPasswordChange: true,
     },
   });
 
@@ -152,7 +152,7 @@ const createAdmin = async (payload: ICreateAdminPayload) => {
       ...admin,
       password,
       role,
-      needsPasswordChnage: true,
+      needsPasswordChange: true,
     },
   });
 
