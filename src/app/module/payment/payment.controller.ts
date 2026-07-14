@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from "express";
 import status from "http-status";
-import { envVars } from "../../config/env";
-import { stripe } from "../../config/stripe.config";
+import stripe from "../../config/stripe.config";
 import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
 import { PaymentService } from "./payment.service";
+import { envVars } from "../../../config/env";
 
 const handleStripeWebhookEvent = catchAsync(
   async (req: Request, res: Response) => {
