@@ -10,7 +10,7 @@ import { envVars } from "../../../config/env";
 const handleStripeWebhookEvent = catchAsync(
   async (req: Request, res: Response) => {
     const signature = req.headers["stripe-signature"] as string;
-    const webhookSecret = envVars.STRIPE.STRIPE_WEBHOOK_SECRET;
+    const webhookSecret = envVars.STRIPE.STRIPE_SECRET_KEY;
 
     if (!signature || !webhookSecret) {
       console.error("Missing Stripe signature or webhook secret");
