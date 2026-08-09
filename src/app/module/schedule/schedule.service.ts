@@ -76,27 +76,27 @@ const createSchedule = async (payload: ICreateSchedulePayload) => {
   return schedules;
 };
 
-const getAllSchedule = async (query: IQueryParams) => {
-  const queryBuilder = new QueryBuilder<
-    Schedule,
-    Prisma.ScheduleWhereInput,
-    Prisma.ScheduleInclude
-  >(prisma.schedule, query, {
-    searchableFields: scheduleSearchableFields,
-    filterableFields: scheduleFilterableFields,
-  });
+// const getAllSchedule = async (query: IQueryParams) => {
+//   const queryBuilder = new QueryBuilder<
+//     Schedule,
+//     Prisma.ScheduleWhereInput,
+//     Prisma.ScheduleInclude
+//   >(prisma.schedule, query, {
+//     searchableFields: scheduleSearchableFields,
+//     filterableFields: scheduleFilterableFields,
+//   });
 
-  const result = await queryBuilder
-    .search()
-    .filter()
-    .paginate()
-    .dynamicInclude(scheduleInclueConfig)
-    .sort()
-    .fields()
-    .execute();
+//   const result = await queryBuilder
+//     .search()
+//     .filter()
+//     .paginate()
+//     .dynamicInclude(scheduleInclueConfig)
+//     .sort()
+//     .fields()
+//     .execute();
 
-  return result;
-};
+//   return result;
+// };
 
 const getScheduleById = async (id: string) => {
   const result = await prisma.schedule.findUnique({
