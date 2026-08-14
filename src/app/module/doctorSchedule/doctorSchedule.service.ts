@@ -157,21 +157,21 @@ const updateMyDoctorSchedule = async (
   return result;
 };
 
-// const deleteMyDoctorSchedule = async (id: string, user: IRequestUser) => {
-//   const doctorData = await prisma.doctor.findUniqueOrThrow({
-//     where: {
-//       email: user.email,
-//     },
-//   });
+const deleteMyDoctorSchedule = async (id: string, user: IRequestUser) => {
+  const doctorData = await prisma.doctor.findUniqueOrThrow({
+    where: {
+      email: user.email,
+    },
+  });
 
-//   await prisma.doctorSchedules.deleteMany({
-//     where: {
-//       isBooked: false,
-//       doctorId: doctorData.id,
-//       scheduleId: id,
-//     },
-//   });
-// };
+  await prisma.doctorSchedules.deleteMany({
+    where: {
+      isBooked: false,
+      doctorId: doctorData.id,
+      scheduleId: id,
+    },
+  });
+};
 
 export const doctorScheduleService = {
   createSchedule,
