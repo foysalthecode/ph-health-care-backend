@@ -198,16 +198,16 @@ const getMySingleAppointment = async (
 
   return appointment;
 };
-const getAllAppointments = async () => {
-  const appointments = await prisma.appointment.findMany({
-    include: {
-      doctor: true,
-      patient: true,
-      schedule: true,
-    },
-  });
-  return appointments;
-};
+// const getAllAppointments = async () => {
+//   const appointments = await prisma.appointment.findMany({
+//     include: {
+//       doctor: true,
+//       patient: true,
+//       schedule: true,
+//     },
+//   });
+//   return appointments;
+// };
 const bookAppointmentWithPayLater = async () => {};
 const initiatePayment = async () => {};
 const cancelUnpaidAppointments = async () => {};
